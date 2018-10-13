@@ -257,7 +257,7 @@ public class PixelmonHelper {
 
                c = Class.forName("com.pixelmonmod.pixelmon.battles.controller.participants.TrainerParticipant");
                Object parTrainer = c.getConstructor(trainer.getClass(), EntityPlayer.class, Integer.TYPE).newInstance(trainer, player, Integer.valueOf(1));
-               //TODO: rlcai
+               //TODO: LikeWind
                Object[] pixelmonArray = (Object[]) Array.newInstance(cEntity, 1);
                pixelmonArray[0] = pixelmon;
                c = Class.forName("com.pixelmonmod.pixelmon.battles.controller.participants.PlayerParticipant");

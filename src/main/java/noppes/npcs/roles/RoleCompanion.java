@@ -530,7 +530,7 @@ public class RoleCompanion extends RoleInterface {
       if (item != null && item.getMCItemStack().getItem() instanceof ItemSword) {
          HashMultimap map = (HashMultimap)item.getMCItemStack().getAttributeModifiers(EntityEquipmentSlot.MAINHAND);
 
-         //TODO: rlcai
+         //TODO: LikeWind
          for(Object entry : map.entries()) {
             Entry entry1 = (Entry) entry;
             if (entry1.getKey().equals(SharedMonsterAttributes.ATTACK_DAMAGE.getName())) {

@@ -270,7 +270,7 @@ public class ServerEventsHandler {
       int var3 = var2.length;
 
       for(int var4 = 0; var4 < var3; ++var4) {
-         //TODO: rlcai
+         //TODO: LikeWind
          for(Object e1 : var2[var4]) {
             Entity e = (Entity)e1;
             if (e instanceof EntityLivingBase) {

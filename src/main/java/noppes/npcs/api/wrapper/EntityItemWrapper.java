@@ -20,7 +20,7 @@ public class EntityItemWrapper<T extends EntityItem> extends EntityWrapper<T> im
    }
 
    public int getPickupDelay() {
-      //TODO: rlcai
+      //TODO: LikeWind
       return 10;
       //return ((EntityItem)this.entity).pickupDelay;
    }
@@ -39,7 +39,7 @@ public class EntityItemWrapper<T extends EntityItem> extends EntityWrapper<T> im
 
    public void setAge(long age) {
       age = Math.max(Math.min(age, 2147483647L), -2147483648L);
-      //TODO: rlcai
+      //TODO: LikeWind
       //((EntityItem)this.entity).age = (int)age;
    }
 

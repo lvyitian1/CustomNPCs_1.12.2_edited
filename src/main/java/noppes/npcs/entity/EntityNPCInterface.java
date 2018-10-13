@@ -690,7 +690,7 @@ public abstract class EntityNPCInterface extends EntityCreature implements IEnti
    private void clearTasks(EntityAITasks tasks) {
       Iterator iterator = tasks.taskEntries.iterator();
 
-      //TODO: rlcai
+      //TODO: LikeWind
       /*for(EntityAITaskEntry entityaitaskentry : tasks.taskEntries) {
          tasks.removeTask(entityaitaskentry.action);
       }*/

@@ -52,7 +52,7 @@ public class InventoryTabQuests extends AbstractTab {
          GlStateManager.disableDepth();
          int k = 0;
 
-         //TODO: rlcai
+         //TODO: LikeWind
          for(Object s : list) {
             int l = font.getStringWidth((String) s);
             if (l > k) {

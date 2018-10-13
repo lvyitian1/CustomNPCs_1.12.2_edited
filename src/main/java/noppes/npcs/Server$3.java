@@ -30,7 +30,7 @@ final class Server$3 implements Runnable {
          if (!Server.fillBuffer(buffer, this.val$enu, this.val$obs)) {
             return;
          }
-         //TODO: rlcai
+         //TODO: LikeWind
          for(Object player1 : this.val$list) {
             EntityPlayerMP player  = (EntityPlayerMP) player1;
             CustomNpcs.Channel.sendTo(new FMLProxyPacket(new PacketBuffer(buffer.copy()), "CustomNPCs"), player);

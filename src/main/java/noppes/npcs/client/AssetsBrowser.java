@@ -59,7 +59,7 @@ public class AssetsBrowser {
          if (map.get(name) instanceof FallbackResourceManager) {
             FallbackResourceManager manager = (FallbackResourceManager)map.get(name);
 
-            //TODO: rlcai
+            //TODO: LikeWind
             for(Object pack : (List)ObfuscationReflectionHelper.getPrivateValue(FallbackResourceManager.class, manager, 1)) {
                if (pack instanceof AbstractResourcePack) {
                   AbstractResourcePack p = (AbstractResourcePack)pack;

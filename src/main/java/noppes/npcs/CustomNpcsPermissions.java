@@ -44,7 +44,7 @@ public class CustomNpcsPermissions {
          LogManager.getLogger(CustomNpcs.class).info("CustomNPC Permissions available:");
          Collections.sort(CustomNpcsPermissions$Permission.access$000(), String.CASE_INSENSITIVE_ORDER);
 
-         //TODO: rlcai
+         //TODO: LikeWind
          for(Object p1 : CustomNpcsPermissions$Permission.access$000()) {
             String p = (String)p1;
             PermissionAPI.registerNode(p, DefaultPermissionLevel.ALL, p);

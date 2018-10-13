@@ -71,7 +71,7 @@ public class GuiNpcRemoteEditor extends GuiNPCInterface implements IScrollData, 
          while(entity.hasNext()) {
             int ids = ((Integer)entity.next()).intValue();
             Client.sendData(EnumPacketServer.RemoteReset, ids);
-            //TODO: rlcai
+            //TODO: LikeWind
             Entity entity2 = this.player.world.getEntityByID(ids);
             if (entity2 != null && entity2 instanceof EntityNPCInterface) {
                ((EntityNPCInterface)entity2).reset();

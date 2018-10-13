@@ -96,7 +96,7 @@ public class EntityUtil {
    }
 
    public static void setRecentlyHit(EntityLivingBase entity) {
-      //TODO: rlcai
+      //TODO: LikeWind
       //entity.recentlyHit = 100;
    }
 }
