@@ -1,7 +1,7 @@
-# CustomNPCs
+# CustomNPCs Mod
 
 #### 项目介绍
-我的世界  Minecraft CustomNPCs 源代码，非官方版本，仅供个人学习使用。
+我的世界  Minecraft CustomNPCs Mod 源代码，非官方代码，仅供个人学习使用。
 
 官方地址：
 http://www.kodevelopment.nl/minecraft/customnpcs
