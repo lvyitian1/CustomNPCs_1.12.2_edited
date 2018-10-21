@@ -12,3 +12,9 @@ forge版本：
 MCP版本：
 stable_39
 
+#### 安装方式
+	window:
+	.\gradlew.bat setupDecompWorkspace
+	
+	linux:
+	./gradlew setupDecompWorkspace
