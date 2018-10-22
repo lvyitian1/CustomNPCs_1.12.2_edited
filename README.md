@@ -14,7 +14,7 @@ stable_39
 
 #### 安装方式
 	windows:
-	.\gradlew.bat setupDecompWorkspace
+	gradlew.bat setupDecompWorkspace
 	
 	linux:
-	./gradlew setupDecompWorkspace
+	gradlew setupDecompWorkspace
