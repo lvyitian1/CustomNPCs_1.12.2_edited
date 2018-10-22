@@ -13,7 +13,7 @@ MCP版本：
 stable_39
 
 #### 安装方式
-	window:
+	windows:
 	.\gradlew.bat setupDecompWorkspace
 	
 	linux:
