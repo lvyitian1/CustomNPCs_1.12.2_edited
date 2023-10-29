@@ -35,7 +35,7 @@ public class ItemNpcSpawnEgg extends Item {
         this.setTab(data.creativeInventory);
         this.setRegistryName("customnpcs","npc_"+this.data.name+"_spawnegg");
         this.setTranslationKey(this.data.name+"'s Spawn Egg");
-        ((ForgeRegistry<Item>)(ForgeRegistries.ITEMS)).unfreeze();
+        //((ForgeRegistry<Item>)(ForgeRegistries.ITEMS)).unfreeze();
         ForgeRegistries.ITEMS.register(this);
         ModelLoader.setCustomModelResourceLocation(this,0,new ModelResourceLocation(Objects.requireNonNull(this.getRegistryName()),"inventory"));
     }

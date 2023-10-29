@@ -170,6 +170,8 @@ public class CustomNpcs {
    }
    @EventHandler
    public void load(FMLPreInitializationEvent ev) {
+      new LinkedNpcController();
+      CategoryManager.INSTANCE.reload();
       MinecraftForge.EVENT_BUS.register(this);
       Channel = NetworkRegistry.INSTANCE.newEventDrivenChannel("CustomNPCs");
       ChannelPlayer = NetworkRegistry.INSTANCE.newEventDrivenChannel("CustomNPCsPlayer");
@@ -220,7 +222,7 @@ public class CustomNpcs {
       new SpawnController();
       new LinkedNpcController();
       new MassBlockController();
-      CategoryManager.INSTANCE.reload();
+      //CategoryManager.INSTANCE.reload();
       ScriptController.Instance.loadCategories();
       ScriptController.Instance.loadStoredData();
       ScriptController.Instance.loadPlayerScripts();
