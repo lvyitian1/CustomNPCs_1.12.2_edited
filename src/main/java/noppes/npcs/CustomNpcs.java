@@ -8,6 +8,7 @@ import net.minecraft.block.BlockVine;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.RangedAttribute;
+import net.minecraft.item.Item;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.ForgeChunkManager;
@@ -15,6 +16,7 @@ import net.minecraftforge.common.ForgeModContainer;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.ObfuscationReflectionHelper;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -25,6 +27,7 @@ import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.FMLEventChannel;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import noppes.npcs.api.NpcAPI;
@@ -156,7 +159,10 @@ public class CustomNpcs {
    public CustomNpcs() {
       instance = this;
    }
-
+   @SubscribeEvent
+   public static void register(RegistryEvent.Register<Item> ev){
+      CategoryManager.INSTANCE.tabs.keySet().forEach(ev.getRegistry()::register);
+   }
    @EventHandler
    public void load(FMLPreInitializationEvent ev) {
       Channel = NetworkRegistry.INSTANCE.newEventDrivenChannel("CustomNPCs");
