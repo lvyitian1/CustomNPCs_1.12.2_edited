@@ -164,8 +164,8 @@ public class CustomNpcs {
    }
    @SubscribeEvent
    public static void register(RegistryEvent.Register<Item> ev){
-      Objects.requireNonNull(LinkedNpcController.Instance);
-      CategoryManager.INSTANCE.reload();
+      /*Objects.requireNonNull(LinkedNpcController.Instance);
+      CategoryManager.INSTANCE.reload();*/
       CategoryManager.INSTANCE.tabs.keySet().forEach(ev.getRegistry()::register);
    }
    @EventHandler
