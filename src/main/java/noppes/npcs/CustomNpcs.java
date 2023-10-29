@@ -1,6 +1,8 @@
 package noppes.npcs;
 
 import java.io.File;
+import java.util.Objects;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockIce;
 import net.minecraft.block.BlockLeaves;
@@ -27,6 +29,7 @@ import net.minecraftforge.fml.common.event.FMLServerAboutToStartEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartedEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.event.FMLServerStoppedEvent;
+import net.minecraftforge.fml.common.eventhandler.EventBus;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.network.FMLEventChannel;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
@@ -161,10 +164,13 @@ public class CustomNpcs {
    }
    @SubscribeEvent
    public static void register(RegistryEvent.Register<Item> ev){
+      Objects.requireNonNull(LinkedNpcController.Instance);
+      CategoryManager.INSTANCE.reload();
       CategoryManager.INSTANCE.tabs.keySet().forEach(ev.getRegistry()::register);
    }
    @EventHandler
    public void load(FMLPreInitializationEvent ev) {
+      MinecraftForge.EVENT_BUS.register(this);
       Channel = NetworkRegistry.INSTANCE.newEventDrivenChannel("CustomNPCs");
       ChannelPlayer = NetworkRegistry.INSTANCE.newEventDrivenChannel("CustomNPCsPlayer");
       Dir = new File(new File(ev.getModConfigurationDirectory(), ".."), "customnpcs");
