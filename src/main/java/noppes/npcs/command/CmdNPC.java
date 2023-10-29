@@ -86,6 +86,7 @@ public class CmdNPC extends CommandNoppesBase {
          sender.sendMessage(Objects.requireNonNull(ITextComponent.Serializer.fromJsonLenient("{\"text\":\"参数1的值必须在0到3之间!\"}")));
          return;
       }
+      if(this.selectedNpc.linkedData==null) this.selectedNpc.linkedData=new LinkedNpcController$LinkedData();
       CategoryManager.INSTANCE.setCreativeInventory(this.selectedNpc.linkedData,LinkedNpcController$LinkedData.ShowInCreativeInventory.values()[ci]);
       sender.sendMessage(Objects.requireNonNull(ITextComponent.Serializer.fromJsonLenient("{\"text\":\"已设置!\"}")));
    }
