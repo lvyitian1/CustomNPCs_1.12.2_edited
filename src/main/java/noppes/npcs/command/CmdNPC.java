@@ -21,6 +21,7 @@ import net.minecraft.world.World;
 import noppes.npcs.api.CommandNoppesBase;
 import noppes.npcs.api.CommandNoppesBase$SubCommand;
 import noppes.npcs.category.CategoryManager;
+import noppes.npcs.controllers.LinkedNpcController;
 import noppes.npcs.controllers.LinkedNpcController$LinkedData;
 import noppes.npcs.entity.EntityCustomNpc;
 import noppes.npcs.entity.EntityNPCInterface;
@@ -86,7 +87,7 @@ public class CmdNPC extends CommandNoppesBase {
          sender.sendMessage(Objects.requireNonNull(ITextComponent.Serializer.fromJsonLenient("{\"text\":\"参数1的值必须在0到3之间!\"}")));
          return;
       }
-      if(this.selectedNpc.linkedData==null) this.selectedNpc.linkedData=new LinkedNpcController$LinkedData();
+      if(this.selectedNpc.linkedData==null) {LinkedNpcController.Instance.addData(this.selectedNpc.linkedName); this.selectedNpc.linkedData=LinkedNpcController.Instance.getData(this.selectedNpc.linkedName);}
       CategoryManager.INSTANCE.setCreativeInventory(this.selectedNpc.linkedData,LinkedNpcController$LinkedData.ShowInCreativeInventory.values()[ci]);
       sender.sendMessage(Objects.requireNonNull(ITextComponent.Serializer.fromJsonLenient("{\"text\":\"已设置!\"}")));
    }

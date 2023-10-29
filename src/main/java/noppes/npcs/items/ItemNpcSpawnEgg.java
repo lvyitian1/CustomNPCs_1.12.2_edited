@@ -2,9 +2,15 @@ package noppes.npcs.items;
 
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
+import net.minecraft.util.EnumActionResult;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.registry.RegistryHandler;
+import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -14,7 +20,9 @@ import noppes.npcs.CreativeTabSeparateNpcs;
 import noppes.npcs.CustomItems;
 import noppes.npcs.CustomNpcs;
 import noppes.npcs.category.CategoryManager;
+import noppes.npcs.controllers.LinkedNpcController;
 import noppes.npcs.controllers.LinkedNpcController$LinkedData;
+import noppes.npcs.entity.EntityCustomNpc;
 
 import java.util.Objects;
 import java.util.Optional;
@@ -39,4 +47,19 @@ public class ItemNpcSpawnEgg extends Item {
         CategoryManager.INSTANCE.tabs.put(this, Optional.ofNullable(this.getCreativeTab()));
     }
 
+    @Override
+    public EnumActionResult onItemUse(EntityPlayer player, World worldIn, BlockPos pos, EnumHand hand, EnumFacing facing, float hitX, float hitY, float hitZ) {
+        if(!worldIn.isRemote)
+        {
+            EntityCustomNpc npc = new EntityCustomNpc(worldIn);
+            npc.display.setName(this.data.name);
+            npc.setPositionAndRotation(pos.getX(), pos.getY(), pos.getZ(), 0.0F, 0.0F);
+            npc.ais.setStartPos(pos);
+            npc.linkedData=this.data;
+            npc.linkedName=this.data.name;
+            worldIn.spawnEntity(npc);
+            npc.setHealth(npc.getMaxHealth());
+        }
+        return super.onItemUse(player, worldIn, pos, hand, facing, hitX, hitY, hitZ);
+    }
 }

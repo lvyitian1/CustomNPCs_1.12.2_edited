@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b04c834b-a105-4f32-bd0c-a791e8b9a075" name="变更" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/noppes/npcs/CustomNpcs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/noppes/npcs/CustomNpcs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CustomNPCs_1.12.2_edited.iws" beforeDir="false" afterPath="$PROJECT_DIR$/CustomNPCs_1.12.2_edited.iws" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/noppes/npcs/command/CmdNPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/noppes/npcs/command/CmdNPC.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/noppes/npcs/items/ItemNpcSpawnEgg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/noppes/npcs/items/ItemNpcSpawnEgg.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +131,7 @@
       <command value="gradle build" />
     </option>
   </component>
-  <component name="RunManager" selected="应用程序.Minecraft Client">
+  <component name="RunManager" selected="Gradle.CustomNPCs_1.12.2_edited [build]">
     <configuration default="true" factoryName="Applet" type="Applet">
       <module name="" />
       <option name="MAIN_CLASS_NAME" />

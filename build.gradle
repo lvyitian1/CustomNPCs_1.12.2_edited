@@ -36,7 +36,9 @@ repositories {
 
 dependencies {
 }
-
+tasks.withType(JavaCompile){
+    options.encoding="UTF8";
+}
 processResources {
     // this will ensure that this task is redone when the versions change.
     inputs.property "version", project.version
