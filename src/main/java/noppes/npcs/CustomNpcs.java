@@ -31,6 +31,7 @@ import noppes.npcs.api.NpcAPI;
 import noppes.npcs.api.wrapper.ItemStackWrapper;
 import noppes.npcs.api.wrapper.WrapperEntityData;
 import noppes.npcs.api.wrapper.WrapperNpcAPI;
+import noppes.npcs.category.CategoryManager;
 import noppes.npcs.command.CommandNoppes;
 import noppes.npcs.config.ConfigLoader;
 import noppes.npcs.config.ConfigProp;
@@ -207,6 +208,7 @@ public class CustomNpcs {
       new SpawnController();
       new LinkedNpcController();
       new MassBlockController();
+      CategoryManager.INSTANCE.reload();
       ScriptController.Instance.loadCategories();
       ScriptController.Instance.loadStoredData();
       ScriptController.Instance.loadPlayerScripts();

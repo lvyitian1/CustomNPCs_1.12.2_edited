@@ -2,6 +2,9 @@ package noppes.npcs.command;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
+
+import com.google.common.collect.Lists;
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommandSender;
@@ -13,14 +16,18 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
 import net.minecraft.world.World;
 import noppes.npcs.api.CommandNoppesBase;
 import noppes.npcs.api.CommandNoppesBase$SubCommand;
+import noppes.npcs.category.CategoryManager;
+import noppes.npcs.controllers.LinkedNpcController$LinkedData;
 import noppes.npcs.entity.EntityCustomNpc;
 import noppes.npcs.entity.EntityNPCInterface;
 import noppes.npcs.roles.RoleCompanion;
 import noppes.npcs.roles.RoleFollower;
 import org.apache.commons.lang3.ArrayUtils;
+import scala.reflect.internal.Trees;
 
 public class CmdNPC extends CommandNoppesBase {
    public EntityNPCInterface selectedNpc;
@@ -64,7 +71,24 @@ public class CmdNPC extends CommandNoppesBase {
          }
       }
    }
-
+   @CommandNoppesBase$SubCommand(desc="Set ShowInCreativeInventory(default 3)",usage="<0/1/2/3>",permission = 2)
+   public void creativeInventory(MinecraftServer server,ICommandSender sender, String[] args){
+      if(args.length<1)
+      {
+         sender.sendMessage(Objects.requireNonNull(ITextComponent.Serializer.fromJsonLenient("{\"text\":\"缺少参数!\"}")));
+         return;
+      }
+      int ci;
+      try {
+         ci=Integer.valueOf(args[0]);
+      }catch(Throwable t){sender.sendMessage(Objects.requireNonNull(ITextComponent.Serializer.fromJsonLenient("{\"text\":\"参数1必须是有效的32位整数!\"}")));return;}
+      if(ci<0 || ci>3){
+         sender.sendMessage(Objects.requireNonNull(ITextComponent.Serializer.fromJsonLenient("{\"text\":\"参数1的值必须在0到3之间!\"}")));
+         return;
+      }
+      CategoryManager.INSTANCE.setCreativeInventory(this.selectedNpc.linkedData,LinkedNpcController$LinkedData.ShowInCreativeInventory.values()[ci]);
+      sender.sendMessage(Objects.requireNonNull(ITextComponent.Serializer.fromJsonLenient("{\"text\":\"已设置!\"}")));
+   }
    @CommandNoppesBase$SubCommand(
       desc = "Set Home (respawn place)",
       usage = "[x] [y] [z]",
@@ -204,9 +228,9 @@ public class CmdNPC extends CommandNoppesBase {
 
    public List getTabCompletions(MinecraftServer server, ICommandSender par1, String[] args, BlockPos pos) {
       if (args.length == 2) {
-         return CommandBase.getListOfStringsMatchingLastWord(args, new String[]{"create", "home", "visible", "delete", "owner", "name"});
+         return CommandBase.getListOfStringsMatchingLastWord(args, new String[]{"create", "home", "visible", "delete", "owner", "name","creativeInventory"});
       } else {
-         return args.length == 3 && args[1].equalsIgnoreCase("owner") ? CommandBase.getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames()) : null;
+         return args.length == 3 && args[1].equalsIgnoreCase("owner") ? CommandBase.getListOfStringsMatchingLastWord(args, server.getOnlinePlayerNames()) : (args.length==3&&args[1].equalsIgnoreCase("creativeInventory")?Lists.newArrayList("0","1","2","3"):null);
       }
    }
 
